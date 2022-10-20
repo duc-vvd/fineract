@@ -206,6 +206,9 @@ public class AccountNumberGenerator {
 
         String entityType = propertyMap.get(ENTITY_TYPE);
         Boolean randomNumberConflict = false;
+        if (entityType == null) {
+            return randomNumberConflict;
+        }
         if (entityType.equals("client")) { // avoid duplication it will loop until it finds new random account no.
 
             Client client = this.clientRepository.getClientByAccountNumber(accountNumber);
